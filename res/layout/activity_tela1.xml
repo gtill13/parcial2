@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+        <ListView
+            android:id="@+id/t1_listView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/t1_button"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp" >
+
+        </ListView>
+
+        <TextView
+            android:id="@+id/t1_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/t1_button"
+            android:layout_alignBottom="@+id/t1_button"
+            android:layout_alignLeft="@+id/t1_listView"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Button
+            android:id="@+id/t1_button"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/t1_listView"
+            android:text="Button" 
+            android:onClick="OnButtonTela1"/>
+    
+</RelativeLayout>
