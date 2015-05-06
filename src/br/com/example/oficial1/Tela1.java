@@ -10,6 +10,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -45,7 +47,8 @@ public class Tela1 extends Activity {
 				Log.d("TiLL", "Clicado na linha ("+posicaoClicada+")");
 
 				Intent novaTela = new Intent(getApplicationContext(), Tela2.class);
-					
+				
+				novaTela.putExtra("posicao", posicaoClicada);
 				novaTela.putExtra("objeto", m_arrPessoas.get(posicaoClicada) );
 				startActivityForResult(novaTela, 2);
 			}
@@ -92,7 +95,38 @@ public class Tela1 extends Activity {
     	// TODO Auto-generated method stub
     	super.onActivityResult(requestCode, resultCode, data);
     	
+    	if (requestCode == 111) // sucesso
+    	{
+    		if (resultCode == 1)
+    			m_arrPessoas.add( (Pessoa) data.getSerializableExtra("objeto"));
+    		else if (resultCode == 2)
+    			m_arrPessoas.set(data.getExtras().getInt("posicao"), (Pessoa) data.getSerializableExtra("objeto"));
+    	}
+    	
     	AtualizaDados();
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        
+        if (id == R.id.menuPesquisar) {
+        	
+            return true;
+        }
+        else if (id == R.id.menuSair) {
+        	finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
     
     public void OnButtonTela1(View v) {
