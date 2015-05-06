@@ -32,7 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignRight="@+id/t1_listView"
-            android:text="Button" 
-            android:onClick="OnButtonTela1"/>
+            android:onClick="OnButtonTela1"
+            android:text="+"
+            android:textSize="27sp" />
     
 </RelativeLayout>
