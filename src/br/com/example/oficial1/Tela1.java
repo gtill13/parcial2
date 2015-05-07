@@ -2,6 +2,7 @@ package br.com.example.oficial1;
 
 import java.util.ArrayList;
 
+import br.com.example.java.ListaID;
 import br.com.example.java.Pessoa;
 import br.com.example.java.PessoaAdapter;
 import android.app.Activity;
@@ -43,8 +44,8 @@ public class Tela1 extends Activity {
 		m_listView = (ListView) findViewById(R.id.t1_listView);
 		m_arrPessoas = new ArrayList<Pessoa>();
         
-		m_arrPessoas.add(new Pessoa("", "Eduarda", "443.506.892-30", "mfey@ilang.com", "3330-0899", "9114-1699", 'f'));
-		m_arrPessoas.add(new Pessoa("", "Marcelo Fey", "443.506.892-30", "mfey@ilang.com", "3330-0899", "9114-1699", 'm'));
+		m_arrPessoas.add(new Pessoa("", "Eduarda", "443.506.892-30", "sady@gbol.com", "3345-3456", "9178-7622", 'f'));
+		m_arrPessoas.add(new Pessoa("", "Marcelo Fey", "835.471.631-70", "mfey@ilang.com", "3330-0899", "9114-1699", 'm'));
 		
 		m_listView.setAdapter( new PessoaAdapter(getApplicationContext() , m_arrPessoas) );
 
@@ -127,6 +128,15 @@ public class Tela1 extends Activity {
         if (id == R.id.menuPesquisar) {
         	
     		Intent novaTela = new Intent(getApplicationContext(), Tela3.class);
+
+    		ListaID list = new ListaID();
+    		
+    		for (Pessoa p : m_arrPessoas) {
+    			list.addID(p.getID());
+			}
+    		
+    		novaTela.putExtra("ids", list );
+    		
     		startActivityForResult(novaTela, BUSCAR_CONTATO);
         	
             return true;

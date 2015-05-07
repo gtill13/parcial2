@@ -9,6 +9,7 @@ public class Pessoa implements Serializable{
 		
 	public Pessoa() {
 		super();
+		ID = "";
 	}
 	
 	public Pessoa(String iD, String nome, String cPF, String email,

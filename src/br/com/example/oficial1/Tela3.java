@@ -2,6 +2,7 @@ package br.com.example.oficial1;
 
 import java.util.ArrayList;
 
+import br.com.example.java.ListaID;
 import br.com.example.java.Pessoa;
 import br.com.example.java.PessoaAdapter;
 import android.app.Activity;
@@ -43,7 +44,32 @@ public class Tela3 extends Activity {
         
 		ContentResolver cr = getContentResolver();
 		
-		Cursor cursor = cr.query( ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
+		Cursor cursor;
+		
+		ListaID list = (ListaID) getIntent().getExtras().getSerializable("ids");
+		
+		if (list.getQtd() > 0)
+		{
+		
+			StringBuilder builder = new StringBuilder();
+			builder.append("(");
+		
+			for (int i = 0; i < list.getQtd(); i++) {
+
+				builder.append(list.getID(i));
+				
+				if (i != list.getQtd() - 1)
+					builder.append(",");
+			}
+			
+			builder.append(")");
+			String condicao = Contacts._ID + " not in " + builder.toString();
+			cursor = cr.query( ContactsContract.Contacts.CONTENT_URI, null, condicao, null, null);
+		}
+		else
+		{
+			cursor = cr.query( ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
+		}
 		
 		while (cursor.moveToNext()) {
 			
@@ -75,9 +101,9 @@ public class Tela3 extends Activity {
 				m_titulo.setText(m_titulo.getText()+".");
 				m_arrPessoa.add(pessoa);
 			}
-			m_titulo.setText(m_arrPessoa.size()+" contato encontrados");
-		
 		}
+		m_titulo.setText(m_arrPessoa.size()+" contato encontrados");
+		
 		cursor.close();
 		
 		m_listView = (ListView)findViewById( R.id.t3_lista);
