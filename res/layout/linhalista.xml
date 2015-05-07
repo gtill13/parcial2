@@ -4,16 +4,28 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/linha_nome"
+        android:id="@+id/linha_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_margin="5dp"
-        android:text="Large Text"
-        android:textColor="#0066CC"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
+        android:text="ID"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#0066CC" />
+    
+    <TextView
+        android:id="@+id/linha_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/linha_id"
+        android:layout_alignBottom="@+id/linha_id"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@+id/linha_id"
+        android:text="nome"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#000000" />
+    
     <ImageView
         android:id="@+id/linha_estrela"
         android:layout_width="wrap_content"
@@ -21,5 +33,15 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/linha_nome"
         android:src="@android:drawable/btn_star_big_off" />
+
+    <TextView
+        android:id="@+id/linha_complem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linha_id"
+        android:layout_below="@+id/linha_id"
+        android:text="email - telefones"
+        android:textAppearance="?android:attr/textAppearanceSmall" 
+        android:textColor="#000000" />
 
 </RelativeLayout>

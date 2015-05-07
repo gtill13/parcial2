@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignRight="@+id/t1_listView"
-            android:onClick="OnButtonTela1"
+            android:onClick="OnAdicionar"
             android:text="+"
             android:textSize="27sp" />
     

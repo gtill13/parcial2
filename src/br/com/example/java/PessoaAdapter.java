@@ -46,11 +46,14 @@ public class PessoaAdapter extends BaseAdapter{
 		
 		View linha = inflater.inflate( R.layout.linhalista, arg2, false );
 
+		TextView id     = (TextView) linha.findViewById (R.id.linha_id);
 		TextView nome     = (TextView) linha.findViewById (R.id.linha_nome);
 		ImageView estrela = (ImageView) linha.findViewById(R.id.linha_estrela);
-		nome.setText(  arrPessoas.get(arg0).getNome());
-
+		TextView compl = (TextView) linha.findViewById (R.id.linha_complem);
 		
+		id   .setText(arrPessoas.get(arg0).getID());
+		nome .setText(arrPessoas.get(arg0).getNome());
+		compl.setText(arrPessoas.get(arg0).getEmail() + " - " + arrPessoas.get(arg0).getTelFixo() + " - " + arrPessoas.get(arg0).getTelCelular());
 		
 		if(arrPessoas.get(arg0).getSexo() == 'f') {
 			estrela.setImageResource(android.R.drawable.btn_star_big_off);

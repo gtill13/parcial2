@@ -25,6 +25,13 @@ public class Tela1 extends Activity {
 	private ListView m_listView;
 	private ArrayList<Pessoa> m_arrPessoas;
 	
+	public static int S_OK     = 0;
+	public static int S_FAILED = 1;
+	
+	public static int BUSCAR_CONTATO = 1;
+	public static int NOVO_CONTATO = 2;
+	public static int EDITAR_CONTATO = 3;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +57,7 @@ public class Tela1 extends Activity {
 				
 				novaTela.putExtra("posicao", posicaoClicada);
 				novaTela.putExtra("objeto", m_arrPessoas.get(posicaoClicada) );
-				startActivityForResult(novaTela, 2);
+				startActivityForResult(novaTela, EDITAR_CONTATO);
 			}
 		});
 		
@@ -94,12 +101,12 @@ public class Tela1 extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     	// TODO Auto-generated method stub
     	super.onActivityResult(requestCode, resultCode, data);
-    	
-    	if (requestCode == 111) // sucesso
+    		
+    	if (resultCode == S_OK)
     	{
-    		if (resultCode == 1)
+    		if (requestCode == NOVO_CONTATO)
     			m_arrPessoas.add( (Pessoa) data.getSerializableExtra("objeto"));
-    		else if (resultCode == 2)
+    		else if (requestCode == EDITAR_CONTATO)
     			m_arrPessoas.set(data.getExtras().getInt("posicao"), (Pessoa) data.getSerializableExtra("objeto"));
     	}
     	
@@ -122,19 +129,65 @@ public class Tela1 extends Activity {
             return true;
         }
         else if (id == R.id.menuSair) {
-        	finish();
+        	      	
+        	AlertDialog.Builder alert  = new AlertDialog.Builder(Tela1.this);
+			alert.setTitle("Encerrar aplicação");
+			alert.setMessage("Deseja realmente encerrar a aplicação?");
+			alert.setPositiveButton("Sim", new DialogInterface.OnClickListener() 
+			{
+	            public void onClick(DialogInterface arg0, int arg1) {
+	            	Tela1.super.finish();
+	            }
+			});
+			
+			alert.setNegativeButton("Não", new DialogInterface.OnClickListener() 
+			{
+	            public void onClick(DialogInterface arg0, int arg1) {		   
+	            }
+			});
+				
+			alert.show();
+        				
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
     
-    public void OnButtonTela1(View v) {
+    @Override
+    public void finish() {
+    	AlertDialog.Builder alert  = new AlertDialog.Builder(Tela1.this);
+		alert.setTitle("Encerrar aplicação");
+		alert.setMessage("Deseja realmente encerrar a aplicação?");
+		alert.setPositiveButton("Sim", new DialogInterface.OnClickListener() 
+		{
+            public void onClick(DialogInterface arg0, int arg1) {
+            	Tela1.super.finish();
+            }
+		});
+		
+		alert.setNegativeButton("Não", new DialogInterface.OnClickListener() 
+		{
+            public void onClick(DialogInterface arg0, int arg1) {		   
+            }
+		});
+			
+		alert.show();
+    }
+    
+    public void OnAdicionar(View v) {
+    	
+		Log.d("TiLL", "OnAdicionar(View v)");
     	
 		Intent novaTela = new Intent(getApplicationContext(), Tela2.class);
-		startActivityForResult(novaTela, 1);
+		startActivityForResult(novaTela, NOVO_CONTATO);
     	
     }
+    
+	public void startActivityForResult(Intent intent, int requestCode) {
+		intent.putExtra("requestCode", requestCode);
+		super.startActivityForResult(intent, requestCode);
+	}
     
 	public void AtualizaDados()
 	{
