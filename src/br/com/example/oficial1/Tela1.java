@@ -104,7 +104,7 @@ public class Tela1 extends Activity {
     		
     	if (resultCode == S_OK)
     	{
-    		if (requestCode == NOVO_CONTATO)
+    		if (requestCode == NOVO_CONTATO || requestCode == BUSCAR_CONTATO)
     			m_arrPessoas.add( (Pessoa) data.getSerializableExtra("objeto"));
     		else if (requestCode == EDITAR_CONTATO)
     			m_arrPessoas.set(data.getExtras().getInt("posicao"), (Pessoa) data.getSerializableExtra("objeto"));
@@ -125,6 +125,9 @@ public class Tela1 extends Activity {
         int id = item.getItemId();
         
         if (id == R.id.menuPesquisar) {
+        	
+    		Intent novaTela = new Intent(getApplicationContext(), Tela3.class);
+    		startActivityForResult(novaTela, BUSCAR_CONTATO);
         	
             return true;
         }

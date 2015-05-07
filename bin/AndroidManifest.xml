@@ -7,6 +7,8 @@
     <uses-sdk
         android:minSdkVersion="15"
         android:targetSdkVersion="15" />
+    
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -25,6 +27,10 @@
         <activity
             android:name=".Tela2"
             android:label="@string/title_activity_tela2" >
+        </activity>
+        <activity
+            android:name=".Tela3"
+            android:label="@string/title_activity_tela3" >
         </activity>
     </application>
 
