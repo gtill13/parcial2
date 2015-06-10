@@ -1,191 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="${relativePackage}.${activityClass}" >
+    android:orientation="vertical" >
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tela2_Nome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="vertical" >
+        android:text=""
+        android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/t2_label1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ID / Nome:" />
+    <EditText
+        android:id="@+id/tela2_Conteudo"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:inputType="textImeMultiLine" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <EditText
-                android:id="@+id/t2_id"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="number" />
-            
-            <EditText
-                android:id="@+id/t2_nome"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:ems="10"
-                android:inputType="textPersonName" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+        <requestFocus />
+    </EditText>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="vertical" >
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
 
-        <TextView
-            android:id="@+id/t2_label2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CPF:" />
-
-        <EditText
-            android:id="@+id/t2_cpf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/t2_label3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email:" />
-
-        <EditText
-            android:id="@+id/t2_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textEmailAddress|textPersonName" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/t2_label4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:text="Sexo:" />
-
-        <RadioGroup
-            android:id="@+id/t2_sexoGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <RadioButton
-                android:id="@+id/t2_masculino"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:checked="true"
-                android:text="Masculino" />
-
-            <RadioButton
-                android:id="@+id/t2_feminino"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:text="Feminino" />
-        </RadioGroup>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp">
-
-        <LinearLayout
+        <Button
+            android:id="@+id/tela2_Cancelar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="-5dp"
+            android:layout_marginRight="-5dp"
             android:layout_weight="1"
-            android:orientation="vertical" >
+            android:text="Cancelar" 
+            android:onClick="onCancelar" />
 
-            <TextView
-                android:id="@+id/t2_label5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Telefone Fixo:" />
-
-            <EditText
-                android:id="@+id/t2_telfixo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="phone" />
-        </LinearLayout>
-
-        <LinearLayout
+        <Button
+            android:id="@+id/tela2_Excluir"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="-5dp"
+            android:layout_marginRight="-5dp"
             android:layout_weight="1"
-            android:orientation="vertical" >
+            android:text="Excluir" 
+            android:onClick="onExcluir" />
 
-            <TextView
-                android:id="@+id/t2_label6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Telefone Celular:" />
-
-            <EditText
-                android:id="@+id/t2_telcel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="phone" />
-        </LinearLayout>
-		
+        <Button
+            android:id="@+id/tela2_Salvar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-5dp"
+            android:layout_marginRight="-5dp"
+            android:layout_weight="1"
+            android:text="Salvar" 
+            android:onClick="onSalvar" />
     </LinearLayout>
-    
-    <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_margin="5dp">
-
-       <Button
-           android:id="@+id/t2_fechar"
-           android:layout_width="0dp"
-           android:layout_height="wrap_content"
-           android:layout_weight="1"
-           android:text="Voltar" 
-		   android:onClick="onVoltar" />
-
-       <Button
-           android:id="@+id/t2_salvar"
-           android:layout_width="0dp"
-           android:layout_height="wrap_content"
-           android:layout_weight="1"
-           android:text="Salvar" 
-           android:onClick="onSalvar" />
-       
-   	</LinearLayout>
 
 </LinearLayout>

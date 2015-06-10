@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Oficial1</string>
+    <string name="app_name">GabrielTillmann</string>
     <string name="title_activity_tela2">Tela2</string>
-    <string name="title_activity_tela3">Tela3</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
